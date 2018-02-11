@@ -1,0 +1,24 @@
+{
+  "name": "playforiota",
+  "version": "1.0.0",
+  "description": "Play for IOTA.",
+  "main": "app.js",
+  "dependencies": {
+    "iota.lib.js": "^0.4.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/7GHz/playforiota.git"
+  },
+  "keywords": [
+    "IOTA",
+    "playforiota"
+  ],
+  "author": "Deno",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/7GHz/playforiota#readme"
+}
