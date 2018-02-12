@@ -4,25 +4,37 @@ var iota = new IOTA({
     'provider': 'http://nodes.iota.fm:80'
 });
 
+var seed = "SSDTGEA9JXOPSILCQYUFQTTKTQLEYB9OHTIPVNDCTYRPT9MVCMDZNVOCGDSBYJWSDIZBBZKDEQGP9LYXB";
+var recipientAddress = "KDSYVZXRAHLVNENHNRUAINDVBODCGFIEGWJRZQTNJIBZMV9MBHRGIGHKKHEEOXPJUHHIETJZQBWIYCQSCXIMXAVFEC";
 
 
-iota.api.getInputs("MTZTQLDLG9VRQ9OFJLQPNDQISUKZLCWTDOGJTZOJVZDZURVRPQMGIILEXMYCKFWABEROBESVMHVVBFDFD", function(error, response)
+
+
+sendTransaction();
+function sendTransaction()
 {
-    if(error)
-    {
-        console.log(error);
-    }
+    trytedSeed = iota.utils.toTrytes(seed);
+    
+    let transfers =
+    [{
+        "address": recipientAddress,
+        "value":3,
+        "message":iota.utils.toTrytes("fakka"),
+        "tag":iota.utils.toTrytes("test")
 
-    else
+    }]
+    iota.api.sendTransfer(seed, 3, 14, transfers, function(error, response)
     {
-        console.log(response);
-        console.log();
-        for(var i = 0; (response["inputs"].length - 1) > i; i++)
+        if(error)
         {
-            console.log("IOTA balance of this specific address: ",response["inputs"][i]["balance"]);
+            console.log(error);
         }
-    }
-    console.log()
-})
+
+        else
+        {
+            console.log("reseponse of the transaction is: ", response);
+        }
+    });
+}
 
 console.log(iota.version);
